@@ -1,6 +1,3 @@
-import java.util.*;
-
-// IMPLENTATION STAION ====================================================>>>>>>>>>>>>>>>>
 
 // class CustomStack {
 //     int[] arr;
@@ -71,17 +68,94 @@ import java.util.*;
 
 // STACK IMPLEMENTATION USING JCF ==================================================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
 
+// public class Stack01 {
+//     void main(){
+//         Stack<Integer> st = new Stack<>();
+//         st.push(10);
+//         st.push(20);
+//         st.push(30);
+//         st.push(40);
+//         st.push(50);
+//         System.out.println(st);
+//         System.out.println(st.pop());
+//         System.out.println(st);
+//         System.out.println(st.peek());
+//     }
+// }
+
+// STACK BASIC IMPLENETATION
 public class Stack01 {
-    void main(){
-        Stack<Integer> st = new Stack<>();
-        st.push(10);
-        st.push(20);
-        st.push(30);
-        st.push(40);
-        st.push(50);
-        System.out.println(st);
-        System.out.println(st.pop());
-        System.out.println(st);
-        System.out.println(st.peek());
+    private int maxSize;
+    private int[] stackArray;
+    private int top;
+
+    public Stack01(int size) {
+        maxSize = size;
+        stackArray = new int[maxSize];
+        top = -1; // Initialize top to -1 to indicate an empty stack
+    }
+
+    public void push(int value) {
+        if (isFull()) {
+            System.out.println("Stack Overflow! Cannot push " + value);
+            return;
+        }
+        stackArray[++top] = value;
+        System.out.println(value + " pushed to stack");
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack Underflow! Cannot pop.");
+            return -1; // Return a sentinel value
+        }
+        return stackArray[top--];
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return -1; // Return a sentinel value
+        }
+        return stackArray[top];
+    }
+
+    public boolean isEmpty() {
+        return (top == -1);
+    }
+
+    public boolean isFull() {
+        return (top == maxSize - 1);
+    }
+
+    public void printStack() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return;
+        }
+        System.out.print("Stack (top to bottom): ");
+        for (int i = top; i >= 0; i--) {
+            System.out.print(stackArray[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Stack01 stack = new Stack01(5);
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.printStack();
+
+        System.out.println("Top element is: " + stack.peek());
+
+        System.out.println("Popped element: " + stack.pop());
+        stack.printStack();
+
+        stack.push(40);
+        stack.push(50);
+        stack.push(60);
+        stack.printStack();
     }
 }
