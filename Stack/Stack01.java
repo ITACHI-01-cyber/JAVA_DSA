@@ -161,139 +161,139 @@
  
 // PUSH POP AND REMOVE AT ANY POSTION IN STACK =================================================================================
 
-import java.util.Scanner;
+// import java.util.Scanner;
 
-   public class Stack01{
-        int maxSize;
-        int[] StackArray;
-        int top; 
+//    public class Stack01{
+//         int maxSize;
+//         int[] StackArray;
+//         int top; 
 
-       public Stack01(int size){ // CONSTRUCTOR
-            maxSize = size;
-            StackArray = new int[maxSize];
-            top = -1;
-        }
+//        public Stack01(int size){ // CONSTRUCTOR
+//             maxSize = size;
+//             StackArray = new int[maxSize];
+//             top = -1;
+//         }
 
-        void push(int Value){
-            if(isFull()){
-                System.out.println("Stack Overflow!!!!"+ Value);
-                return;
-            }
-            StackArray[++top] = Value;
-            System.out.println(Value  + "pushed in stack");
-        }
-        int pop(){  
-            if(isEmpty()){
-                System.out.println("Stack underflow!!!");
-                return -1;
-            }
-            return StackArray[top--];
-        }
-        int peek(){
-            if(isEmpty()){
-                System.out.println("Stack underflow!!!");
-                return -1;
-            }
-            return StackArray[top];
-        }
-        boolean isEmpty(){
-            return (top == -1);
-        }
-        boolean isFull(){
-            return (top == maxSize -1);
-        }
+//         void push(int Value){
+//             if(isFull()){
+//                 System.out.println("Stack Overflow!!!!"+ Value);
+//                 return;
+//             }
+//             StackArray[++top] = Value;
+//             System.out.println(Value  + "pushed in stack");
+//         }
+//         int pop(){  
+//             if(isEmpty()){
+//                 System.out.println("Stack underflow!!!");
+//                 return -1;
+//             }
+//             return StackArray[top--];
+//         }
+//         int peek(){
+//             if(isEmpty()){
+//                 System.out.println("Stack underflow!!!");
+//                 return -1;
+//             }
+//             return StackArray[top];
+//         }
+//         boolean isEmpty(){
+//             return (top == -1);
+//         }
+//         boolean isFull(){
+//             return (top == maxSize -1);
+//         }
 
-        // Insert at a specific index (0 is bottom of the stack)
-        void pushAt(int pos, int Value){
-            if(isFull()){
-                System.out.println("Stack Overflow!!!! Cannot push " + Value);
-                return;
-            }
-            if(pos < 0 || pos > top + 1){
-                System.out.println("Invalid position!");
-                return;
-            }
-            // Shift elements right to make room
-            for(int i = top; i >= pos; i--){
-                StackArray[i + 1] = StackArray[i];
-            }
-            StackArray[pos] = Value;
-            top++;
-            System.out.println(Value + " pushed at position " + pos);
-        }
+//         // Insert at a specific index (0 is bottom of the stack)
+//         void pushAt(int pos, int Value){
+//             if(isFull()){
+//                 System.out.println("Stack Overflow!!!! Cannot push " + Value);
+//                 return;
+//             }
+//             if(pos < 0 || pos > top + 1){
+//                 System.out.println("Invalid position!");
+//                 return;
+//             }
+//             // Shift elements right to make room
+//             for(int i = top; i >= pos; i--){
+//                 StackArray[i + 1] = StackArray[i];
+//             }
+//             StackArray[pos] = Value;
+//             top++;
+//             System.out.println(Value + " pushed at position " + pos);
+//         }
 
-        // Remove from a specific index
-        int popAt(int pos){
-            if(isEmpty() || pos < 0 || pos > top){
-                System.out.println("Invalid position or Stack underflow!!!");
-                return -1;
-            }
-            int poppedVal = StackArray[pos];
-            // Shift elements left to close the gap
-            for(int i = pos; i < top; i++){
-                StackArray[i] = StackArray[i + 1];
-            }
-            top--;
-            return poppedVal;
-        }
+//         // Remove from a specific index
+//         int popAt(int pos){
+//             if(isEmpty() || pos < 0 || pos > top){
+//                 System.out.println("Invalid position or Stack underflow!!!");
+//                 return -1;
+//             }
+//             int poppedVal = StackArray[pos];
+//             // Shift elements left to close the gap
+//             for(int i = pos; i < top; i++){
+//                 StackArray[i] = StackArray[i + 1];
+//             }
+//             top--;
+//             return poppedVal;
+//         }
 
-        // View element at a specific index
-        int peekAt(int pos){
-            if(isEmpty() || pos < 0 || pos > top){
-                System.out.println("Invalid position or Stack empty!!!");
-                return -1;
-            }
-            return StackArray[pos];
-        }
+//         // View element at a specific index
+//         int peekAt(int pos){
+//             if(isEmpty() || pos < 0 || pos > top){
+//                 System.out.println("Invalid position or Stack empty!!!");
+//                 return -1;
+//             }
+//             return StackArray[pos];
+//         }
 
-        void PrintStack(){
-            if(isEmpty()){
-                System.out.println("Stack underflow!!!");
-                return;
-            }
-            System.out.println("Stack :");
-            for(int i = top; i>= 0; i--){
-                System.out.print(StackArray[i]+ " ");
-            }
-            System.out.println();
-        }
-        public static void main(String[] args) {
-            Stack01 obj = new Stack01(6);
+//         void PrintStack(){
+//             if(isEmpty()){
+//                 System.out.println("Stack underflow!!!");
+//                 return;
+//             }
+//             System.out.println("Stack :");
+//             for(int i = top; i>= 0; i--){
+//                 System.out.print(StackArray[i]+ " ");
+//             }
+//             System.out.println();
+//         }
+//         public static void main(String[] args) {
+//             Stack01 obj = new Stack01(6);
 
-            obj.push(10);
-            obj.push(20);obj.push(30);obj.push(40);obj.push(50);
-            obj.PrintStack();
+//             obj.push(10);
+//             obj.push(20);obj.push(30);obj.push(40);obj.push(50);
+//             obj.PrintStack();
 
-            // System.out.println(obj.pop());
-            // System.out.println("Stack after pop: ");
-            // obj.PrintStack();
+//             // System.out.println(obj.pop());
+//             // System.out.println("Stack after pop: ");
+//             // obj.PrintStack();
 
-            // System.out.println(obj.peek());
-            // System.out.println("Stack after peek:");
-            // obj.PrintStack();
+//             // System.out.println(obj.peek());
+//             // System.out.println("Stack after peek:");
+//             // obj.PrintStack();
             
-            System.out.println("Specific Position Operations");
-            Scanner sc = new Scanner(System.in);
+//             System.out.println("Specific Position Operations");
+//             Scanner sc = new Scanner(System.in);
             
-            System.out.print("Enter position to push at: ");
-            int pushPos = sc.nextInt();
-            System.out.print("Enter value to push: ");
-            int pushVal = sc.nextInt();
-            obj.pushAt(pushPos, pushVal);
-            obj.PrintStack();
+//             System.out.print("Enter position to push at: ");
+//             int pushPos = sc.nextInt();
+//             System.out.print("Enter value to push: ");
+//             int pushVal = sc.nextInt();
+//             obj.pushAt(pushPos, pushVal);
+//             obj.PrintStack();
             
-            System.out.print("Enter position to peek at: ");
-            int peekPos = sc.nextInt();
-            System.out.println("Peek at index " + peekPos + ": " + obj.peekAt(peekPos));
+//             System.out.print("Enter position to peek at: ");
+//             int peekPos = sc.nextInt();
+//             System.out.println("Peek at index " + peekPos + ": " + obj.peekAt(peekPos));
             
-            System.out.print("Enter position to pop from: ");
-            int popPos = sc.nextInt();
-            System.out.println("Popped from index " + popPos + ": " + obj.popAt(popPos));
-            obj.PrintStack();
+//             System.out.print("Enter position to pop from: ");
+//             int popPos = sc.nextInt();
+//             System.out.println("Popped from index " + popPos + ": " + obj.popAt(popPos));
+//             obj.PrintStack();
 
-        }
-    }
+//         }
+//    
 
-
+// 
 
     
